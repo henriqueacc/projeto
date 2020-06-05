@@ -1,0 +1,134 @@
+char comando;
+int valor1 = 0;
+int valor2 = 0;
+void setup()
+{
+  pinMode(5, OUTPUT);//velocidade
+  pinMode(4, OUTPUT);
+  pinMode(3, OUTPUT);
+  
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(9, OUTPUT);//velocidade 2
+  
+  digitalWrite(4,LOW);
+  digitalWrite(3,LOW);
+  analogWrite(5,valor1);
+  
+  digitalWrite(11,LOW);
+  digitalWrite(10,LOW);
+  analogWrite(9,valor2);
+  
+  
+  Serial.begin(9600);
+  
+    Serial.println("Digite F para ir para frente, B para tras");
+    Serial.println("L para a esquerda e R para a direita");
+    Serial.println("Digite com letras minusculas");
+}
+
+void loop()
+{
+  if(Serial.available() > 0)
+  {
+    comando = Serial.read();
+    
+    if (comando == 'f')
+    {
+    
+    
+  	valor1 = 255;
+  	valor2 = 255;
+  	analogWrite(5,valor1);
+  	analogWrite(9,valor2);
+  
+  		digitalWrite(4, HIGH);
+  		digitalWrite(3, LOW);
+  	
+  		digitalWrite(11, HIGH);
+  		digitalWrite(10, LOW);
+      
+    delay(5000);
+        
+      	digitalWrite(4, LOW);
+  		digitalWrite(3, LOW);
+  	
+  		digitalWrite(11, LOW);
+  		digitalWrite(10, LOW);
+    }
+
+    if (comando == 'b')
+    {
+    
+    
+  	valor1 = 255;
+  	valor2 = 255;
+  	analogWrite(5,valor1);
+  	analogWrite(9,valor2);
+  
+  		digitalWrite(4, LOW);
+  		digitalWrite(3, HIGH);
+  	
+  		digitalWrite(11, LOW);
+  		digitalWrite(10, HIGH);
+      
+    delay(5000);
+        
+      	digitalWrite(4, LOW);
+  		digitalWrite(3, LOW);
+  	
+  		digitalWrite(11, LOW);
+  		digitalWrite(10, LOW);
+    }
+        
+    if (comando == 'l')
+    {
+    
+    
+  	valor1 = 255;
+  	valor2 = 255;
+  	analogWrite(5,valor1);
+  	analogWrite(9,valor2);
+  
+  		digitalWrite(4, LOW);
+  		digitalWrite(3, LOW);
+  	
+  		digitalWrite(11, LOW);
+  		digitalWrite(10, HIGH);
+      
+    delay(5000);
+        
+      	digitalWrite(4, LOW);
+  		digitalWrite(3, LOW);
+  	
+  		digitalWrite(11, LOW);
+  		digitalWrite(10, LOW);
+    }
+    
+    if (comando == 'r')
+    {
+    
+    
+  	valor1 = 255;
+  	valor2 = 255;
+  	analogWrite(5,valor1);
+  	analogWrite(9,valor2);
+  
+  		digitalWrite(4, LOW);
+  		digitalWrite(3, HIGH);
+  	
+  		digitalWrite(11, LOW);
+  		digitalWrite(10, LOW);
+      
+    delay(5000);
+        
+      	digitalWrite(4, LOW);
+  		digitalWrite(3, LOW);
+  	
+  		digitalWrite(11, LOW);
+  		digitalWrite(10, LOW);
+    }
+    
+    Serial.println(comando);
+  }
+}
